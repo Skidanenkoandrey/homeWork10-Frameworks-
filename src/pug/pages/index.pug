@@ -1,6 +1,96 @@
 extends ../layout/main
+include ../utils/attached-stories
 
 block variables
     - let title = 'Bootstrap';
     - let description = 'Bootstrap practice';
-    - let pageClass = 'page';
+    - let pageClass = 'page-wrapper';
+block page
+    .header.container-fluid
+        include ../components/navigation
+    .main.container-lg
+        section.user
+            .row.row-user-statistic
+                .offset-md-1.col-md-2
+                    .user__avatar
+                        img.user__img(
+                            src="assets/img/avatar.jpg"
+                        )
+                .offset-md-1.col-md-8
+                    .row
+                        .col-12.col-12-top
+                            .row
+                                .col-md-4.col-6
+                                    h3.user__name Darth Vader
+                                .col-md-8.col-6
+                                    include ../components/button-group
+                        .col-12.col-12-center
+                            .row
+                                .col-md-2.col-4
+                                    .user__post.user-post
+                                        span.user-post__counter 79
+                                        p.user-post__text posts
+                                .col-md-2.col-4
+                                    .user__followers.user-followers
+                                        span.user-followers__counter 379
+                                        p.user-followers__text followers
+                                .col-md-2.col-4
+                                    .user__following.user-following
+                                        span.user-following__counter 179
+                                        p.user-following__text following
+                        .col-12
+                            h3.user__name.user__name_description Darth Vader
+                            p.user__description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                            a.link.user__link bit.ly/35Ce3mX
+        section.user-attached-stories
+            .row
+                .offset-md-1.col-md-1.col-4.user-attached-stories_col
+                    +attached-stories ("assets/img/ben-kenobi.png","My best friends")
+                .col-md-1.col-4.user-attached-stories_col
+                    +attached-stories ("assets/img/luke&leia.jpg","My children")
+                .col-md-1.col-4
+                    +attached-stories ("assets/img/stormtroopers.png","My stormtroopers")
+        section.posts
+            ul.nav.nav-tabs#myTab.nav-tabs_custom(
+                role="tablist"
+            )
+                li.nav-item(
+                    role="presentation"
+                )
+                    a.nav-link.active.nav-link_custom(
+                        id="post-tab"
+                        data-bs-toggle="tab"
+                        href="#post"
+                        role="tab"
+                        aria-controls="post"
+                        aria-selected="true"
+                    ) Post
+
+                li.nav-item(
+                    role="presentation"
+                )
+                    a.nav-link.nav-link_custom(
+                        id="tagged-tab"
+                        data-bs-toggle="tab"
+                        href="#tagged"
+                        role="tab"
+                        aria-controls="tagged"
+                        aria-selected="false"
+                    ) tagged
+
+            .tab-content#myTabContent
+                .tab-pane.fade.show.active(
+                    id="post"
+                    role="tabpanel"
+                    aria-labelledby="post-tab"
+                ) 11111111111111111111111111111111
+                .tab-pane.fade(
+                    id="tagged"
+                    role="tabpanel"
+                    aria-labelledby="tagged-tab"
+                ) 222222222222222222222222222222222
+
+    script(
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous")

@@ -1,0 +1,29 @@
+.btn-group(
+    role="group"
+    aria-label="Button group with nested dropdown"
+)
+    button.btn.btn-primary.btn-custom(
+        type="button"
+    ) Follow
+
+    .btn-group(
+        role="group"
+    )
+        button#btnGroupDrop1.btn.btn-primary.dropdown-toggle.dropdown-toggle-custom(
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+        )
+        ul.dropdown-menu(
+            aria-labelledby="btnGroupDrop1"
+        )
+            li
+                a.dropdown-item(
+                    href="#"
+                ) Dropdown link
+            li
+                a.dropdown-item(
+                    href="#"
+                ) Dropdown link
+    button.btn.btn-kebab
+        span.btn-kebab__dot

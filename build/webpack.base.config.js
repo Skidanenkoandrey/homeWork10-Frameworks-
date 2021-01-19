@@ -55,7 +55,7 @@ module.exports = {
             exclude: [/img/],
             options: {
                 name: '[name].[ext]',
-                // outputPath: `/${PATHS.assets}/fonts`
+                outputPath: `../../${PATHS.assets}/fonts`
             }
         }, {
             test: /\.(png|jpg|gif|svg)$/,
