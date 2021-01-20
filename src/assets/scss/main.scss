@@ -29,12 +29,11 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: "HelveticaNeue";
 }
 
 .header {
   border-bottom: 1px solid $light-gray;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 }
 
 .bg-custom {
@@ -54,6 +53,7 @@ body {
       border-radius: 100%;
     }
   }
+
 
   &__img {
     max-width: 100%;
@@ -89,6 +89,13 @@ body {
     }
   }
 
+  &-post,
+  &-followers,
+  &-following:not(:last-child) {
+    margin-right: 6%;
+  }
+
+
   &__link {
     color: $dark;
     font-size: $font-l;
@@ -116,19 +123,57 @@ body {
     object-fit: cover;
     border-radius: 100%;
   }
+
   &-attached-stories__link {
     margin-bottom: 15px;
     box-shadow: 0 0 0 4px #dbdbdb;
     border-radius: 100%;
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 5px 10px #dbdbdb;
+      transition: 0.2s;
+    }
   }
+
   &-attached-stories_col {
     margin-right: 40px;
   }
 }
 
+.nav-img-custom {
+  position: relative;
+}
+
+.navbar-nav-custom .active .nav-img-custom {
+  filter: drop-shadow(0 0 5px $primary-color);
+}
+
+.nav-link-header_custom {
+  position: relative;
+}
+
+.nav-link-header_custom::after {
+  content: "5";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-white);
+  top: 5px;
+  right: 0;
+  font-size: $font-s;
+  background: var(--bs-red);
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+}
+
+
 .row-user-statistic {
   display: flex;
   margin-bottom: 55px;
+
   & > :first-child {
     margin-bottom: 30px;
   }
@@ -151,7 +196,11 @@ body {
 .col-12 {
   &-top,
   &-center {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+  }
+
+  &-center {
+    display: flex;
   }
 }
 
@@ -204,14 +253,24 @@ body {
   }
 }
 
-@media screen and (max-width:767px) {
-  .user-attached-stories_col:not(:last-child) {
-    margin: 0;
-  }
-}
-
 .posts {
   margin-top: 55px;
+
+  &__picture {
+    width: 100%;
+    height: auto;
+  }
+
+  &__icon {
+    width: 11px;
+    height: auto;
+    margin-right: 5px;
+
+    &-path {
+      fill: $light;
+      transition: 0.2s;
+    }
+  }
 }
 
 .nav-tabs_custom {
@@ -221,6 +280,56 @@ body {
 }
 
 .nav-tabs .nav-link.nav-link_custom {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
   border: none;
+  padding: 1rem;
+  margin: 0 2rem 1rem;
+  text-transform: uppercase;
+  color: $light;
+  font-weight: $font-bold;
+  font-size: $font-s;
+  transition: 0.2s;
 }
 
+.nav-link_custom:before {
+  content: none;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: $primary-color;
+  transition: 0.2s;
+}
+
+.active.nav-link_custom:before {
+  content: "";
+  transition: 0.2s;
+}
+
+.active.nav-link_custom .posts__icon-path {
+  fill: $primary-color;
+  transition: 0.2s;
+}
+
+.nav-tabs .active.nav-link_custom {
+  color: $primary-color;
+  transition: 0.2s;
+}
+
+
+@media screen and (max-width: 767px) {
+  .user-attached-stories_col:not(:last-child) {
+    margin: 0;
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .row .col-sm-4 .posts__item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
