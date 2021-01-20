@@ -328,8 +328,21 @@ body {
 }
 
 
-@media screen and (max-width: 576px) {
-  .row .col-sm-4 .posts__item:not(:last-child) {
-    margin-bottom: 25px;
+
+@media screen and (max-width: 992px) {
+  .navbar-nav-custom {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+  .form-custom {
+    margin: 0 auto;
+    max-width: 360px;
+    width: 100%;
+  }
+  .nav-link-header_custom:after {
+    top: 0;
+    right: 0;
+    left: 10px;
   }
 }
